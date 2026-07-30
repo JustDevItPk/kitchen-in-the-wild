@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 
-export default defineConfig(({ command }) => ({
+export default defineConfig({
   build: {
     target: "esnext",
     chunkSizeWarningLimit: 4096,
@@ -15,5 +15,6 @@ export default defineConfig(({ command }) => ({
   esbuild: {
     target: "esnext",
   },
-  base: command === "build" ? "/laas/" : "/",
-}));
+  // Root-relative assets for Netlify / standalone hosting (was "/laas/" for subpath deploys)
+  base: "/",
+});
